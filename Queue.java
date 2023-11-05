@@ -1,60 +1,38 @@
 public class Queue<T> {
-    Node<T> front;
-    Node<T> rear;
+    // for this implementation I'm treating SLL's head as Queue's front and no need to track rear
+    // because adding to the end of a linked list is easy
+    SLL<T> list;
+
     int count;
 
     public Queue() {
-        front = null;
-        rear = null;
+        list = new SLL<T>();
         count = 0;
     }
     public void enqueue (T elem) {
-        Node temp = new Node();
-        temp.elem = elem;
-        if (isEmpty()) {
-            front = rear = temp;
-        } else {
-            rear.next = temp;
-            rear = rear.next;
-            count++;
-        }
+        list.addRear(elem);
+        count++;
     }
 
     public T dequeue() {
         if (isEmpty()) {
             throw new IllegalStateException("Cannot call dequeue on empty queue");
         }
-        T result = front.elem;
-        front = front.next;
+        T result = (T) list.get(0);
+        list.delete(0);
         count--;
-        if (count == 0) {
-            rear = null;
-        }
         return result;
     }
 
-    public T peek() {
+    public T peek() { //TODO redo peek
         if (isEmpty()) {
             throw new IllegalStateException("Cannot call peek on empty queue");
         }
-        return front.elem;
+        return list.get(0);
     }
     @Override
-    public String toString() {
-        String result = "";
-        if (isEmpty()) {
-            result = "Queue is empty";
-        } else {
-            Node curr = front;
-            result = "[" + curr.elem;
-            for (int i = 1; i < size() - 1; i++) {
-                curr = curr.next;
-                result += "," + curr.elem;
-
-            }
-            result += "]";
-        }
-        return result;
+    public String toString() { //TODO redo toString
+        return list.toString();
     }
     // private helper to check for underflow
     private boolean isEmpty() {
