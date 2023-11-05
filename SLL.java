@@ -79,13 +79,18 @@ public class SLL<T> {
         }
         //increment through
         Node<T> doomed;
-        Node<T> curr = head;
-        for (int i = 1; i < theIndex; i++) {
-            curr = curr.next;
+        if (theIndex == 0) {
+            doomed = head;
+            head = head.next;
+        } else {
+            Node<T> curr = head;
+            for (int i = 1; i < theIndex; i++) {
+                curr = curr.next;
+            }
+            //change pointers
+            doomed = curr.next;
+            curr.next = curr.next.next;
         }
-        //change pointers
-        doomed = curr.next;
-        curr.next = curr.next.next;
         count--;
         return doomed.elem;
     }
