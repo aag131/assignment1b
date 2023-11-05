@@ -24,14 +24,14 @@ public class Queue<T> {
         return result;
     }
 
-    public T peek() { //TODO redo peek
+    public T peek() {
         if (isEmpty()) {
             throw new IllegalStateException("Cannot call peek on empty queue");
         }
         return list.get(0);
     }
     @Override
-    public String toString() { //TODO redo toString
+    public String toString() {
         return list.toString();
     }
     // private helper to check for underflow
