@@ -167,15 +167,6 @@ public class SLL<Type> {
             elem = null;
             next = null;
         }
-        // added new constructors to call from queue
-        Node(Type theElem) {
-            elem = theElem;
-        }
-        // added new constructors to call from queue
-        Node(Type theElem, Node<Type> theNext) {
-            elem = theElem;
-            next = theNext;
-        }
 
     }
 }
