@@ -18,7 +18,7 @@ public class DropOutStack<T> {
         arr[top] = elem;
     }
 
-    public T pop() { /* TODO write pop method */
+    public T pop() {
         // check for underflow and throw exception
         if (isEmpty()) {
             throw new IllegalStateException("Cannot call pop() on empty stack");
@@ -28,7 +28,7 @@ public class DropOutStack<T> {
         return temp;
     }
 
-    public T peek() { /* TODO write peek method */
+    public T peek() {
         // check for underflow and throw exception
         if (isEmpty()) {
             throw new IllegalStateException("Cannot call pop() on empty stack");
