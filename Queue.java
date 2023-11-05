@@ -8,22 +8,36 @@ public class Queue<T> {
         rear = null;
         count = 0;
     }
-    public void enqueue (T elem) { /* TODO write enqueue method */
+    public void enqueue (T elem) {
         Node temp = new Node();
         temp.elem = elem;
         if (isEmpty()) {
             front = rear = temp;
         } else {
             rear.next = temp;
+            rear = rear.next;
+            count++;
         }
     }
 
     public T dequeue() { // TODO write dequeue method
-        return null;
+        if (isEmpty()) {
+            throw new IllegalStateException("Cannot call dequeue on empty queue");
+        }
+        T result = front.elem;
+        front = front.next;
+        count--;
+        if (count == 0) {
+            rear = null;
+        }
+        return result;
     }
 
     public T peek() { // TODO write peek method
-        return null;
+        if (isEmpty()) {
+            throw new IllegalStateException("Cannot call peek on empty queue");
+        }
+        return front.elem;
     }
     @Override
     public String toString() { // TODO write toString method
