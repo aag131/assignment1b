@@ -20,7 +20,7 @@ public class Queue<T> {
         }
     }
 
-    public T dequeue() { // TODO write dequeue method
+    public T dequeue() {
         if (isEmpty()) {
             throw new IllegalStateException("Cannot call dequeue on empty queue");
         }
@@ -33,15 +33,28 @@ public class Queue<T> {
         return result;
     }
 
-    public T peek() { // TODO write peek method
+    public T peek() {
         if (isEmpty()) {
             throw new IllegalStateException("Cannot call peek on empty queue");
         }
         return front.elem;
     }
     @Override
-    public String toString() { // TODO write toString method
-        return "";
+    public String toString() {
+        String result = "";
+        if (isEmpty()) {
+            result = "Queue is empty";
+        } else {
+            Node curr = front;
+            result = "[" + curr.elem;
+            for (int i = 1; i < size() - 1; i++) {
+                curr = curr.next;
+                result += "," + curr.elem;
+
+            }
+            result += "]";
+        }
+        return result;
     }
     // private helper to check for underflow
     private boolean isEmpty() {
@@ -54,7 +67,7 @@ public class Queue<T> {
     private int size() {
         return count;
     }
-
+    // node class for queue; I did try using SLL's node class, but it got too messy
     static class Node<T> {
         private T elem;
         private Node<T> next;
