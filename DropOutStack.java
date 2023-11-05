@@ -38,7 +38,16 @@ public class DropOutStack<T> {
 
     @Override
     public String toString() { // TODO write toString method
-        return "";
+        String result = top + ": " + arr[top];
+        for (int i = top - 1; i >= 0; i--) {
+            result += "\n" + i + ": " + arr[i];
+        }
+        if (top < arr.length - 1) {
+            for (int j = arr.length - 1; j > top; j--) {
+                result += "\n" + j + ": " + arr[j];
+            }
+        }
+        return result;
     }
 
     //private helper method to check for underflow
