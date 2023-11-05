@@ -160,12 +160,21 @@ public class SLL<Type> {
     }
 
     // nested node class
-    class Node<Type> {
+    static class Node<Type> {
         private Type elem;
         private Node<Type> next;
         Node() {
             elem = null;
             next = null;
+        }
+        // added new constructors to call from queue
+        Node(Type theElem) {
+            elem = theElem;
+        }
+        // added new constructors to call from queue
+        Node(Type theElem, Node<Type> theNext) {
+            elem = theElem;
+            next = theNext;
         }
 
     }
