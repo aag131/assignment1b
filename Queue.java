@@ -32,7 +32,13 @@ public class Queue<T> {
     }
     @Override
     public String toString() {
-        return list.toString();
+        String result = "";
+        if (count == 0) {
+            result = "Queue is empty";
+        } else {
+            result = list.toString();
+        }
+        return result;
     }
     // private helper to check for underflow
     private boolean isEmpty() {
@@ -45,13 +51,5 @@ public class Queue<T> {
     private int size() {
         return count;
     }
-    // node class for queue; I did try using SLL's node class, but it got too messy
-    static class Node<T> {
-        private T elem;
-        private Node<T> next;
-        Node() {
-            elem = null;
-            next = null;
-        }
-    }
+
 }
