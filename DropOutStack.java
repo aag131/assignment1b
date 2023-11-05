@@ -11,11 +11,12 @@ public class DropOutStack<T> {
         if(isFull()) {
             top = 0;
             arr[top] = elem;
+        } else {
+            // assigns top to the next index and will overwrite the bottom of the stack
+            // if the stack is at capacity
+            top++;
+            arr[top] = elem;
         }
-        // assigns top to the next index and will overwrite the bottom of the stack
-        // if the stack is at capacity
-        top++;
-        arr[top] = elem;
     }
 
     public T pop() {
@@ -23,8 +24,14 @@ public class DropOutStack<T> {
         if (isEmpty()) {
             throw new IllegalStateException("Cannot call pop() on empty stack");
         }
+
         T temp = arr[top];
-        top--;
+        arr[top] = null;
+        if (top == 0) {
+            top = arr.length - 1;
+        } else {
+            top--;
+        }
         return temp;
     }
 
@@ -40,11 +47,19 @@ public class DropOutStack<T> {
     public String toString() { // TODO write toString method
         String result = top + ": " + arr[top];
         for (int i = top - 1; i >= 0; i--) {
-            result += "\n" + i + ": " + arr[i];
+            if (arr[i] == null) {
+                result += "\n" + i + ": empty";
+            } else {
+                result += "\n" + i + ": " + arr[i];
+            }
         }
         if (top < arr.length - 1) {
             for (int j = arr.length - 1; j > top; j--) {
-                result += "\n" + j + ": " + arr[j];
+                if (arr[j] == null) {
+                    result += "\n" + j + ": empty";
+                } else {
+                    result += "\n" + j + ": " + arr[j];
+                }
             }
         }
         return result;
