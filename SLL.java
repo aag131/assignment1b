@@ -3,7 +3,7 @@ import java.util.NoSuchElementException;
 /*
 Alyssa Goodwin
 CSS 342
-Assignment 1a
+Assignment 1a -> continued use for Assignment 1b
 Due: Oct 22, 2023
  */
 public class SLL<T> {

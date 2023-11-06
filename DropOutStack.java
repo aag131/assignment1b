@@ -1,3 +1,9 @@
+/*
+Alyssa Goodwin
+CSS 342
+Assignment 1b
+Due: Nov 05, 2023
+ */
 public class DropOutStack<T> {
     T[] arr;
     int top;
@@ -42,22 +48,17 @@ public class DropOutStack<T> {
         }
         return arr[top];
     }
-
     @Override
-    public String toString() { // TODO write toString method
+    public String toString() {
         String result = top + ": " + arr[top];
         for (int i = top - 1; i >= 0; i--) {
-            if (arr[i] == null) {
-                result += "\n" + i + ": empty";
-            } else {
+            if (arr[i] != null) {
                 result += "\n" + i + ": " + arr[i];
             }
         }
         if (top < arr.length - 1) {
             for (int j = arr.length - 1; j > top; j--) {
-                if (arr[j] == null) {
-                    result += "\n" + j + ": empty";
-                } else {
+                if (arr[j] != null) {
                     result += "\n" + j + ": " + arr[j];
                 }
             }

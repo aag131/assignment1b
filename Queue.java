@@ -1,6 +1,12 @@
+/*
+Alyssa Goodwin
+CSS 342
+Assignment 1b
+Due: Nov 05, 2023
+ */
 public class Queue<T> {
-    // for this implementation I'm treating SLL's head as Queue's front and no need to track rear
-    // because adding to the end of a linked list is easy
+    /* for this implementation I'm treating SLL's head as Queue's front and no need to track rear
+    because of using SLL doesn't require knowledge of the end */
     SLL<T> list;
 
     int count;
@@ -15,6 +21,7 @@ public class Queue<T> {
     }
 
     public T dequeue() {
+        // check for underflow
         if (isEmpty()) {
             throw new IllegalStateException("Cannot call dequeue on empty queue");
         }
@@ -46,10 +53,6 @@ public class Queue<T> {
             return true;
         }
         return false;
-    }
-    // private helper to get size/count
-    private int size() {
-        return count;
     }
 
 }
